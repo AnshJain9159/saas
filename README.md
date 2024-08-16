@@ -16,6 +16,8 @@
 
 - [User authentication and authorization]
 - [File upload and management]
+- [Smart Image Resizing]
+- [Effecient Video Compression]
 
 ## Getting Started
 
@@ -30,4 +32,5 @@
 1. Clone the repository: git clone https://github.com/yourusername/saas.git
 2. Navigate to the project directory: cd saas
 3. Install dependencies: npm install
-4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+4. Set up envionment variables by referring to Sample Env
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
