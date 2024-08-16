@@ -4,14 +4,13 @@ import { getCldImageUrl,getCldVideoUrl } from 'next-cloudinary'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import {filesize} from 'filesize'
 import {Download,Clock,FileDown,FileUp } from "lucide-react"
-import Image from 'next/image'
 import {Video} from '../types/index';
+
 dayjs.extend(relativeTime)
 
 interface VideoCardProps {
     video: Video;
     onDownload: (url:string,title:string)=>void;
-
 }
 
 const  VideoCard: React.FC<VideoCardProps>=({video,onDownload})=> {
@@ -30,7 +29,6 @@ const  VideoCard: React.FC<VideoCardProps>=({video,onDownload})=> {
             quality: "auto",
             assetType: "video",
         })
-
     },[])
 
     const getFullVideoUrl = useCallback( (publicId:string) => {
@@ -38,7 +36,6 @@ const  VideoCard: React.FC<VideoCardProps>=({video,onDownload})=> {
             src: publicId,
             width: 1920,
             height: 1080,
-           
         })
     },[])
 
@@ -47,7 +44,7 @@ const  VideoCard: React.FC<VideoCardProps>=({video,onDownload})=> {
             src: publicId,
             width: 1920,
             height: 1080,
-           rawTransformations:["e_preview:duration_15: max_seg_9:min_seg_duration_1"]
+           rawTransformations:["e_preview:duration_15:max_seg_9:min_seg_dur_1"]
         })
     },[])
 
@@ -97,7 +94,7 @@ const  VideoCard: React.FC<VideoCardProps>=({video,onDownload})=> {
               )
             ) : (
                 
-              <Image
+              <img
                 src={getThumbnailUrl(video.publicId)}
                 alt={video.title}
                 className="w-full h-full object-cover"

@@ -19,17 +19,17 @@ interface CloudinaryUploadResult{
 }
 
 export async function POST(request: NextRequest) {
-    
+    const{userId}=auth();
+    if(!userId) {
+            return NextResponse.json({error: 'Not authorized'},{status: 401});
+    }
 
     try {
         // Check if user is authenticated
-        const{userId}=auth();
-        if(!userId) {
-            return NextResponse.json({error: 'Not authorized'},{status: 401});
-        }
+        
 
         if(
-            !process.env.CLOUDINARY_CLOUD_NAME || process.env.CLOUDINARY_API_KEY || process.env.CLOUDINARY_API_SECRET
+            !process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET
         ){
             return NextResponse.json({error: 'Cloudinary configuration missing'},{status:500});
         }
